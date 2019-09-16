@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Trining</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        div {
+            width: 100%;
+            height: 100%;
+            background: red;
+        }
+
+        header {
+            padding: 10px 0;
+            width: 100%;
+            background: green;
+            color: white;
+        }
+
+        header a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 31px;
+        }
+
+        .active {
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <a href="add_sum.html">Add Two Input</a>
+        <a href="btn_animation.html">Click Btn Animation Div</a>
+        <a href="digital_clock.html">Digital Clock</a>
+        <a href="full_screen.html" class="active">All Device Adjust Screen Width & Height Resize Time</a>
+        <a href="video_control_btn.html">Video Control</a>
+    </header>
+    <div class="wrapper">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(window).resize(function() {
+                var x = $(window).width();
+                var y = $(window).height();
+
+                $('div').width(x);
+                $('div').height(y);
+
+                console.log('width = ' + x);
+                console.log('height = ' + y);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

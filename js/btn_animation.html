@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Click Button Animation Div</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 2px solid black;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            left: 132px;
+            top: 109px;
+        }
+
+        header {
+            padding: 10px 0;
+            width: 100%;
+            background: green;
+            color: white;
+        }
+
+        header a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 31px;
+        }
+
+        .active {
+            color: white;
+        }
+
+        button {
+            background: black;
+            padding: 5px;
+            width: 100px;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="add_sum.html">Add Two Input</a>
+        <a href="btn_animation.html" class="active">Click Btn Animation Div</a>
+        <a href="digital_clock.html">Digital Clock</a>
+        <a href="full_screen.html">All Device Adjust Screen Width & Height Resize Time</a>
+        <a href="video_control_btn.html">Video Control</a>
+    </header>
+
+    <h2>Click Button Animation Div</h2>
+    <button type="button" id="myBtn"> Click me</button>
+    <div id="myDiv">
+        Animation happen when click the button.
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('#myBtn').click(function() {
+                $('#myDiv').animate({
+                    left: '532px',
+                    top: '109px'
+                })
+                $('#myDiv').animate({
+                    left: '532px',
+                    top: '530px'
+                })
+                $('#myDiv').animate({
+                    left: '132px',
+                    top: '530px'
+                })
+                $('#myDiv').animate({
+                    left: '132px',
+                    top: '109px'
+                })
+            });
+
+            
+            
+            
+
+        });
+
+    </script>
+</body>
+
+</html>

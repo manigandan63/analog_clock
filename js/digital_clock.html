@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital Clock</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background: #dce4e7;
+        }
+
+        div {
+            background: black;
+            color: yellow;
+            font-size: 40px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid yellow;
+            font-weight: bold;
+        }
+
+        header {
+            padding: 10px 0;
+            width: 100%;
+            background: green;
+            color: white;
+        }
+
+        header a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 31px;
+        }
+
+        .active {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="add_sum.html">Add Two Input</a>
+        <a href="btn_animation.html">Click Btn Animation Div</a>
+        <a href="digital_clock.html" class="active">Digital Clock</a>
+        <a href="full_screen.html">All Device Adjust Screen Width & Height Resize Time</a>
+        <a href="video_control_btn.html">Video Control</a>
+    </header>
+    <div></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function digitalClockFn() {
+                var date = new Date();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+                var z;
+
+                if (minutes <= 9) {
+                    minutes = '0' + minutes;
+                }
+                if (seconds <= 9) {
+                    seconds = '0' + seconds;
+                }
+                if (hours <= 9) {
+                    hours = '0' + hours;
+                }
+
+
+
+                if (hours < 12) {
+                    z = "AM";
+                } else {
+                    z = "PM";
+                }
+
+                if (hours > 12) {
+                    hours = hours - '12';
+                    hours = '0' + hours;
+                }
+
+                var x = hours.toString() + " : " + minutes.toString() + " : " + seconds.toString() + " " + z;
+                $('div').text(x)
+            }
+            setInterval(digitalClockFn, 1);
+        });
+
+    </script>
+</body>
+
+</html>

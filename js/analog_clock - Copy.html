@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Analog Clock</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: fantasy;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border: 3px solid #716363;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+            font-size: 20px;
+            background-size: 100% 100%;
+            box-shadow: inset 2px 5px 26px #523f3f;
+        }
+
+        span {
+            position: absolute;
+            top: 5px;
+            left: 131px;
+        }
+
+        .clock span:nth-child(1) {
+            top: 35px;
+            left: 205px;
+        }
+
+        .clock span:nth-child(2) {
+            top: 78px;
+            left: 246px;
+        }
+
+        .clock span:nth-child(3) {
+            font-size: 30px;
+            color: red;
+            top: 131px;
+            left: 262px;
+        }
+
+        .clock span:nth-child(4) {
+            top: 197px;
+            left: 248px;
+        }
+
+        .clock span:nth-child(5) {
+            top: 241px;
+            left: 203px;
+        }
+
+        .clock span:nth-child(6) {
+            font-size: 30px;
+            color: red;
+            top: 248px;
+            left: 141px;
+        }
+
+        .clock span:nth-child(7) {
+            top: 241px;
+            left: 85px;
+        }
+
+        .clock span:nth-child(8) {
+            top: 197px;
+            left: 41px;
+        }
+
+        .clock span:nth-child(9) {
+            font-size: 30px;
+            color: red;
+            top: 130px;
+            left: 23px;
+        }
+
+        .clock span:nth-child(10) {
+            top: 78px;
+            left: 37px;
+        }
+
+        .clock span:nth-child(11) {
+            top: 35px;
+            left: 82px;
+        }
+
+        .clock span:nth-child(12) {
+            font-size: 30px;
+            color: red;
+            top: 12px;
+            left: 141px;
+        }
+
+        .hour {
+            width: 5px;
+            height: 99px;
+            background: red;
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            transform-origin: bottom center;
+            z-index: 1;
+        }
+
+        .minutes {
+            width: 4px;
+            height: 110px;
+            background: black;
+            position: absolute;
+            top: 40px;
+            left: 151px;
+            transform-origin: bottom center;
+            z-index: 2;
+        }
+
+        .seconds {
+            width: 2px;
+            height: 120px;
+            background: black;
+            position: absolute;
+            top: 30px;
+            left: 151px;
+            transform-origin: bottom center;
+            z-index: 3;
+        }
+
+        .clock_center {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: #5a4747;
+            top: 132px;
+            left: 139px;
+            border-radius: 50%;
+            z-index: 5;
+        }
+
+        .digital-show-timing {
+            width: 100px;
+            height: 20px;
+            border: 2px solid red;
+            position: absolute;
+            top: 167px;
+            left: 80px;
+            z-index: 0;
+            background: black;
+            color: white;
+            padding: 4px;
+            font-size: 12px;
+            font-family: cursive;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .addition_info {
+            width: 27px;
+            height: 20px;
+            border: 2px solid red;
+            position: absolute;
+            top: 167px;
+            left: 194px;
+            z-index: 0;
+            background: black;
+            color: white;
+            padding: 4px;
+            font-size: 12px;
+            font-family: cursive;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .todayday,
+        .thisMonth,
+        .thisYear {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="clock"> <span>1</span> <span>2</span> <span>3</span> <span>4</span> <span>5</span> <span>6</span> <span>7</span> <span>8</span> <span>9</span> <span>10</span> <span>11</span> <span>12</span>
+        <div class="hour"></div>
+        <div class="minutes"></div>
+        <div class="seconds"></div>
+        <div class="clock_center"></div>
+        <div class="digital-show-timing"></div>
+        <div class="addition_info">
+            <div class="todayday"></div>
+            <div class="thisMonth"></div>
+            <div class="thisYear"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.thisMonth, .thisYear').hide();
+            $('.todayday').click(function() {
+                $('.todayday, .thisYear').hide();
+                $('.thisMonth').show();
+            });
+            $('.thisMonth').click(function() {
+                $('.todayday, .thisMonth').hide();
+                $('.thisYear').show();
+            });
+            $('.thisYear').click(function() {
+                $('.thisMonth, .thisYear').hide();
+                $('.todayday').show();
+            });
+
+            function myFunction() {
+                var date, hour, seconds, setInHours, setInMinutes, setInSeconds, ampm, x, day;
+                date = new Date();
+
+                hour = date.getHours();
+                minutes = date.getMinutes();
+                seconds = date.getSeconds();
+
+                ampm;
+                setInHours = 360 / 12 * hour;
+                setInMinutes = 360 / 60 * minutes;
+                setInSeconds = 360 / 60 * seconds;
+                if (setInSeconds / 360 == 0) {
+
+                }
+                $('.hour').css('transform', 'rotate(' + setInHours + 'deg)');
+                $('.minutes').css('transform', 'rotate(' + setInMinutes + 'deg)');
+                $('.seconds').css('transform', 'rotate(' + setInSeconds + 'deg)');
+
+
+
+                if (hour <= 9) {
+                    hour = '0' + hour;
+                }
+                if (minutes <= 9) {
+                    minutes = '0' + minutes;
+                }
+                if (seconds <= 9) {
+                    seconds = '0' + seconds;
+                }
+
+                if (hour > 13) {
+                    hour = hour - 12;
+                    hour = '0' + hour;
+                    ampm = "PM";
+                } else {
+                    ampm = "AM";
+                }
+                x = hour.toString() + " : " + minutes.toString() + " : " + seconds.toString() + " : " + ampm;
+                $('.digital-show-timing').text(x);
+
+                switch (date.getDay()) {
+                    case 0:
+                        day = "Sun";
+                        break;
+                    case 1:
+                        day = "Mon";
+                        break;
+                    case 2:
+                        day = "The";
+                        break;
+                    case 3:
+                        day = "Wed";
+                        break;
+                    case 4:
+                        day = "Thu";
+                        break;
+                    case 5:
+                        day = "Fri";
+                        break;
+                    case 6:
+                        day = "Sat";
+                        break;
+                }
+                $('.todayday').text(day);
+
+                var thisMonth = date.getMonth();
+                thisMonth = thisMonth;
+                switch (date.getMonth()) {
+                    case 0:
+                        month = "Jan";
+                        break;
+                    case 1:
+                        month = "Feb";
+                        break;
+                    case 2:
+                        month = "Mar";
+                        break;
+                    case 3:
+                        month = "Apr";
+                        break;
+                    case 4:
+                        month = "May";
+                        break;
+                    case 5:
+                        month = "Jun";
+                        break;
+                    case 6:
+                        month = "Jul";
+                        break;
+                    case 7:
+                        month = "Aug";
+                        break;
+                    case 8:
+                        month = "Sep";
+                        break;
+                    case 9:
+                        month = "Oct";
+                        break;
+                    case 10:
+                        month = "Nov";
+                        break;
+                    case 11:
+                        month = "Dec";
+                        break;
+
+                }
+                $('.thisMonth').text(month);
+                fullYear = date.getFullYear();
+                $('.thisYear').text(fullYear);
+
+            }
+
+            setInterval(myFunction, 60);
+
+        });
+
+    </script>
+</body>
+
+</html>
